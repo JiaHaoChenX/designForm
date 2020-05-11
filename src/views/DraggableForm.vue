@@ -18,8 +18,7 @@
         <vuedraggable :list="renderList" :options="dragOptions2" class="vuedraggable">
           <transition-group class="form" type="transition" :name="'flip-list'" tag="div">
             <template v-for="(item, index) in renderList">
-              <render-form :name="item.id" :key="index" @renderFormClick="renderFormClick(item.id)"
-                :isClick="curRenderFormId === item.id" :formData="item"></render-form>
+              <render-form :name="item.id" :key="index" :formData="item"></render-form>
             </template>
           </transition-group>
         </vuedraggable>
@@ -28,8 +27,7 @@
         <a-tabs default-active-key="1">
           <a-tab-pane key="1" tab="字段属性">
             <div style="margin: 10px;text-align: left;">
-              <label for="">name</label>
-              <a-input placeholder="Basic usage" />
+              <render-attrs :optionsObj="{}"></render-attrs>
             </div>
           </a-tab-pane>
           <a-tab-pane key="2" tab="表当属性" force-render>
@@ -42,48 +40,48 @@
 </template>
 
 <script>
-// @ is an alias to /src
-// import CodeMirror from 'codemirror'
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/blackboard.css'
 import vuedraggable from 'vuedraggable'
+import formList from './formList'
+import RenderAttrs from './RenderAttrs'
 export default {
   name: 'designform',
+  computed: {
+  },
   data () {
     return {
-      curRenderFormId: '',
-      draggable: false,
-      dragoverType: null,
-      formList: [
-        { name: '单行文本框', type: 'input' },
-        { name: '多行文本框', type: 'textarea' },
-        { name: '开关', type: 'switch' },
-        { name: '时间选择器', type: 'time' },
-        {
-          name: '子表单',
-          type: 'table',
-          tableColumns: [
-            { name: '时间选择器', type: 'time', id: 1 },
-            { name: '开关', type: 'switch', id: 2 }
-          ]
-        },
-        {
-          name: '栅格布局',
-          type: 'grid',
-          columns: [
-            {
-              span: 12,
-              list: [
-              ]
-            },
-            {
-              span: 12,
-              list: [
-              ]
-            }
-          ]
-        }
-      ],
+      formList,
+      // formList: [
+      //   { name: '单行文本框', type: 'input' },
+      //   { name: '多行文本框', type: 'textarea' },
+      //   { name: '开关', type: 'switch' },
+      //   { name: '时间选择器', type: 'time' },
+      //   {
+      //     name: '子表单',
+      //     type: 'table',
+      //     tableColumns: [
+      //       { name: '时间选择器', type: 'time', id: 1 },
+      //       { name: '开关', type: 'switch', id: 2 }
+      //     ]
+      //   },
+      //   {
+      //     name: '栅格布局',
+      //     type: 'grid',
+      //     columns: [
+      //       {
+      //         span: 12,
+      //         list: [
+      //         ]
+      //       },
+      //       {
+      //         span: 12,
+      //         list: [
+      //         ]
+      //       }
+      //     ]
+      //   }
+      // ],
       renderList: [],
       // 拖拽表单1
       dragOptions1: {
@@ -114,16 +112,14 @@ export default {
   },
   methods: {
     cloneData (original) {
-      original.id = original.type + '_' + new Date().getTime()
-      console.log(original)
+      original.model = original.type + '_' + new Date().getTime()
+      this.$store.commit('setCurRenderForm', original)
       return JSON.parse(JSON.stringify(original))
-    },
-    renderFormClick (id) {
-      this.curRenderFormId = id
     }
   },
   components: {
-    vuedraggable
+    vuedraggable,
+    RenderAttrs
   }
 }
 </script>

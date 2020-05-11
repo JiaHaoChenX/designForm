@@ -41,11 +41,221 @@
         <k-input></k-input>
       </div>
     </div>
+    <div class="element" v-else-if="formData.type === 'textarea'" :class="{elementBorder: isClick}">
+      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
+        <a-icon type="border-inner"/>
+      </div>
+      <div class="operation" v-show="isClick">
+        <a-icon type="copy" class="icon"/>
+        <a-divider type="vertical" />
+        <a-icon type="delete" class="icon"/>
+      </div>
+      <div class="elementLable">{{formData.name}}</div>
+      <div class="elementContent">
+        <k-textarea></k-textarea>
+      </div>
+    </div>
+    <div class="element" v-else-if="formData.type === 'number'" :class="{elementBorder: isClick}">
+      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
+        <a-icon type="border-inner"/>
+      </div>
+      <div class="operation" v-show="isClick">
+        <a-icon type="copy" class="icon"/>
+        <a-divider type="vertical" />
+        <a-icon type="delete" class="icon"/>
+      </div>
+      <div class="elementLable">{{formData.name}}</div>
+      <div class="elementContent">
+        <k-number></k-number>
+      </div>
+    </div>
+    <div class="element" v-else-if="formData.type === 'radio'" :class="{elementBorder: isClick}">
+      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
+        <a-icon type="border-inner"/>
+      </div>
+      <div class="operation" v-show="isClick">
+        <a-icon type="copy" class="icon"/>
+        <a-divider type="vertical" />
+        <a-icon type="delete" class="icon"/>
+      </div>
+      <div class="elementLable">{{formData.name}}</div>
+      <div class="elementContent">
+        <k-radio></k-radio>
+      </div>
+    </div>
+    <div class="element" v-else-if="formData.type === 'checkbox'" :class="{elementBorder: isClick}">
+      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
+        <a-icon type="border-inner"/>
+      </div>
+      <div class="operation" v-show="isClick">
+        <a-icon type="copy" class="icon"/>
+        <a-divider type="vertical" />
+        <a-icon type="delete" class="icon"/>
+      </div>
+      <div class="elementLable">{{formData.name}}</div>
+      <div class="elementContent">
+        <k-checkbox></k-checkbox>
+      </div>
+    </div>
+    <div class="element" v-else-if="formData.type === 'time'" :class="{elementBorder: isClick}">
+      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
+        <a-icon type="border-inner"/>
+      </div>
+      <div class="operation" v-show="isClick">
+        <a-icon type="copy" class="icon"/>
+        <a-divider type="vertical" />
+        <a-icon type="delete" class="icon"/>
+      </div>
+      <div class="elementLable">{{formData.name}}</div>
+      <div class="elementContent">
+        <k-time></k-time>
+      </div>
+    </div>
+    <div class="element" v-else-if="formData.type === 'date'" :class="{elementBorder: isClick}">
+      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
+        <a-icon type="border-inner"/>
+      </div>
+      <div class="operation" v-show="isClick">
+        <a-icon type="copy" class="icon"/>
+        <a-divider type="vertical" />
+        <a-icon type="delete" class="icon"/>
+      </div>
+      <div class="elementLable">{{formData.name}}</div>
+      <div class="elementContent">
+        <k-date></k-date>
+      </div>
+    </div>
+    <div class="element" v-else-if="formData.type === 'rate'" :class="{elementBorder: isClick}">
+      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
+        <a-icon type="border-inner"/>
+      </div>
+      <div class="operation" v-show="isClick">
+        <a-icon type="copy" class="icon"/>
+        <a-divider type="vertical" />
+        <a-icon type="delete" class="icon"/>
+      </div>
+      <div class="elementLable">{{formData.name}}</div>
+      <div class="elementContent">
+        <k-rate></k-rate>
+      </div>
+    </div>
+    <div class="element" v-else-if="formData.type === 'select'" :class="{elementBorder: isClick}">
+      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
+        <a-icon type="border-inner"/>
+      </div>
+      <div class="operation" v-show="isClick">
+        <a-icon type="copy" class="icon"/>
+        <a-divider type="vertical" />
+        <a-icon type="delete" class="icon"/>
+      </div>
+      <div class="elementLable">{{formData.name}}</div>
+      <div class="elementContent">
+        <k-select></k-select>
+      </div>
+    </div>
+    <div class="element" v-else-if="formData.type === 'switch'" :class="{elementBorder: isClick}">
+      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
+        <a-icon type="border-inner"/>
+      </div>
+      <div class="operation" v-show="isClick">
+        <a-icon type="copy" class="icon"/>
+        <a-divider type="vertical" />
+        <a-icon type="delete" class="icon"/>
+      </div>
+      <div class="elementLable">{{formData.name}}</div>
+      <div class="elementContent">
+        <k-switch></k-switch>
+      </div>
+    </div>
+    <div class="element" v-else-if="formData.type === 'slider'" :class="{elementBorder: isClick}">
+      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
+        <a-icon type="border-inner"/>
+      </div>
+      <div class="operation" v-show="isClick">
+        <a-icon type="copy" class="icon"/>
+        <a-divider type="vertical" />
+        <a-icon type="delete" class="icon"/>
+      </div>
+      <div class="elementLable">{{formData.name}}</div>
+      <div class="elementContent">
+        <k-slider></k-slider>
+      </div>
+    </div>
+    <div class="element" v-else-if="formData.type === 'text'" :class="{elementBorder: isClick}">
+      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
+        <a-icon type="border-inner"/>
+      </div>
+      <div class="operation" v-show="isClick">
+        <a-icon type="copy" class="icon"/>
+        <a-divider type="vertical" />
+        <a-icon type="delete" class="icon"/>
+      </div>
+      <div class="elementLable">{{formData.name}}</div>
+      <div class="elementContent">
+        <k-text></k-text>
+      </div>
+    </div>
+    <div class="element" v-else-if="formData.type === 'fileupload'" :class="{elementBorder: isClick}">
+      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
+        <a-icon type="border-inner"/>
+      </div>
+      <div class="operation" v-show="isClick">
+        <a-icon type="copy" class="icon"/>
+        <a-divider type="vertical" />
+        <a-icon type="delete" class="icon"/>
+      </div>
+      <div class="elementLable">{{formData.name}}</div>
+      <div class="elementContent">
+        <k-fileupload></k-fileupload>
+      </div>
+    </div>
+    <div class="element" v-else-if="formData.type === 'imgupload'" :class="{elementBorder: isClick}">
+      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
+        <a-icon type="border-inner"/>
+      </div>
+      <div class="operation" v-show="isClick">
+        <a-icon type="copy" class="icon"/>
+        <a-divider type="vertical" />
+        <a-icon type="delete" class="icon"/>
+      </div>
+      <div class="elementLable">{{formData.name}}</div>
+      <div class="elementContent">
+        <k-imgupload></k-imgupload>
+      </div>
+    </div>
+    <div class="element" v-else-if="formData.type === 'cascader'" :class="{elementBorder: isClick}">
+      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
+        <a-icon type="border-inner"/>
+      </div>
+      <div class="operation" v-show="isClick">
+        <a-icon type="copy" class="icon"/>
+        <a-divider type="vertical" />
+        <a-icon type="delete" class="icon"/>
+      </div>
+      <div class="elementLable">{{formData.name}}</div>
+      <div class="elementContent">
+        <k-cascader></k-cascader>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import KInput from '../components/K_Input'
+import KTextarea from '../components/K_Textarea'
+import KNumber from '../components/K_Number'
+import KRadio from '../components/K_Radio'
+import KCheckbox from '../components/K_Checkbox'
+import KTime from '../components/K_Time'
+import KDate from '../components/K_Date'
+import KRate from '../components/K_Rate'
+import KSelect from '../components/K_Select'
+import KSwitch from '../components/K_Switch'
+import KSlider from '../components/K_Slider'
+import KText from '../components/K_Text'
+import KFileupload from '../components/K_Fileupload'
+import KImgupload from '../components/K_Imgupload'
+import KCascader from '../components/K_Cascader'
 export default {
   name: 'renderform',
   props: {
@@ -55,16 +265,30 @@ export default {
   },
   computed: {
     isClick () {
-      return this.$store.getters.getCurRenderFormId === this.formData.id
+      return this.$store.getters.getCurRenderForm.model === this.formData.model
     }
   },
   methods: {
     renderFormClick () {
-      this.$store.commit('setCurRenderFormId', this.formData.id)
+      this.$store.commit('setCurRenderForm', this.formData)
     }
   },
   components: {
-    KInput
+    KInput,
+    KTextarea,
+    KNumber,
+    KRadio,
+    KCheckbox,
+    KTime,
+    KDate,
+    KRate,
+    KSelect,
+    KSwitch,
+    KSlider,
+    KText,
+    KFileupload,
+    KImgupload,
+    KCascader
   }
 }
 </script>
@@ -139,10 +363,5 @@ export default {
   width: 100%;
   background: #F56C6C;
   border-radius: 3px;
-}
-.elementList {
-  // position: relative;
-  // z-index: 100;
-  // background: #ECF5FF;
 }
 </style>

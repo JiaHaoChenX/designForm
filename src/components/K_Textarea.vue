@@ -1,6 +1,5 @@
 <template>
-  <div class="input">
-
+  <div class="textarea">
   </div>
 </template>
 
@@ -11,13 +10,13 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.input {
+.textarea {
   width: 100%;
-  height: 32px;
-  line-height: 32px;
+  height: 107px;
   text-align: left;
   font-size: 14px;
-  text-indent: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   border: 1px solid #DCDFE6;
   border-radius: 5px;
 }

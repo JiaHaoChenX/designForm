@@ -5,17 +5,16 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    curRenderFormId: ''
+    curRenderForm: {}
   },
   getters: {
-    getCurRenderFormId: state => {
-      console.log(state.curRenderFormId)
-      return state.curRenderFormId
+    getCurRenderForm: state => {
+      return state.curRenderForm
     }
   },
   mutations: {
-    setCurRenderFormId (state, id) {
-      state.curRenderFormId = id
+    setCurRenderForm (state, form) {
+      state.curRenderForm = form
     }
   },
   actions: {
