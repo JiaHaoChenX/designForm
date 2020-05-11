@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # making-form
 
 ## Project setup
@@ -28,7 +27,3 @@ npm run lint
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-=======
-# designForm
-表单设计器
->>>>>>> 15fcc4751fb943a886c3b5c500200a5af8a78ef0
