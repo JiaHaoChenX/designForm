@@ -1,12 +1,17 @@
 <template>
   <div class="switchBig">
-    <a-switch default-checked @change="onChange" />
+    <a-switch disabled v-model="formData.options.defaultValue"/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'switch'
+  name: 'mySwitch',
+  props: {
+    formData: {
+      required: true
+    }
+  }
 }
 </script>
 

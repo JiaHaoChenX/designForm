@@ -80,7 +80,7 @@
       </div>
       <div class="elementLable">{{formData.name}}</div>
       <div class="elementContent">
-        <k-radio></k-radio>
+        <k-radio :formData="formData"></k-radio>
       </div>
     </div>
     <div class="element" v-else-if="formData.type === 'checkbox'" :class="{elementBorder: isClick}">
@@ -94,7 +94,7 @@
       </div>
       <div class="elementLable">{{formData.name}}</div>
       <div class="elementContent">
-        <k-checkbox></k-checkbox>
+        <k-checkbox :formData="formData"></k-checkbox>
       </div>
     </div>
     <div class="element" v-else-if="formData.type === 'time'" :class="{elementBorder: isClick}">
@@ -108,7 +108,7 @@
       </div>
       <div class="elementLable">{{formData.name}}</div>
       <div class="elementContent">
-        <k-time></k-time>
+        <k-time :formData="formData"></k-time>
       </div>
     </div>
     <div class="element" v-else-if="formData.type === 'date'" :class="{elementBorder: isClick}">
@@ -122,7 +122,7 @@
       </div>
       <div class="elementLable">{{formData.name}}</div>
       <div class="elementContent">
-        <k-date></k-date>
+        <k-date :formData="formData"></k-date>
       </div>
     </div>
     <div class="element" v-else-if="formData.type === 'rate'" :class="{elementBorder: isClick}">
@@ -136,7 +136,7 @@
       </div>
       <div class="elementLable">{{formData.name}}</div>
       <div class="elementContent">
-        <k-rate></k-rate>
+        <k-rate :formData="formData"></k-rate>
       </div>
     </div>
     <div class="element" v-else-if="formData.type === 'select'" :class="{elementBorder: isClick}">
@@ -150,7 +150,7 @@
       </div>
       <div class="elementLable">{{formData.name}}</div>
       <div class="elementContent">
-        <k-select></k-select>
+        <k-select :formData="formData"></k-select>
       </div>
     </div>
     <div class="element" v-else-if="formData.type === 'switch'" :class="{elementBorder: isClick}">
@@ -164,7 +164,7 @@
       </div>
       <div class="elementLable">{{formData.name}}</div>
       <div class="elementContent">
-        <k-switch></k-switch>
+        <k-switch :formData="formData"></k-switch>
       </div>
     </div>
     <div class="element" v-else-if="formData.type === 'slider'" :class="{elementBorder: isClick}">
@@ -192,7 +192,7 @@
       </div>
       <div class="elementLable">{{formData.name}}</div>
       <div class="elementContent">
-        <k-text></k-text>
+        <k-text  :formData="formData"></k-text>
       </div>
     </div>
     <div class="element" v-else-if="formData.type === 'fileupload'" :class="{elementBorder: isClick}">

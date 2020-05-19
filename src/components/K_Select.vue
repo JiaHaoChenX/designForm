@@ -1,7 +1,7 @@
 <template>
   <div class="selectBig">
     <div class="select">
-      <span class="value"></span>
+      <span class="value">{{formData.options.defaultValue}}</span>
       <a-icon type="caret-down" />
     </div>
   </div>
@@ -9,7 +9,12 @@
 
 <script>
 export default {
-  name: 'select'
+  name: 'mySelect',
+  props: {
+    formData: {
+      required: true
+    }
+  }
 }
 </script>
 
@@ -27,6 +32,7 @@ export default {
   border-radius: 5px;
 }
 .value {
+  float: left;
   text-indent: 10px;
   display: inline-block;
 }

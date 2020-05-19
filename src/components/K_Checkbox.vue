@@ -1,31 +1,22 @@
 <template>
   <div class="radioBig">
-    <div class="radio">
-      <span class="radius"></span>
-      <span class="lable">Option1</span>
-    </div>
-    <div class="radio">
-      <span class="radius"></span>
-      <span class="lable">Option1</span>
-    </div>
-    <div class="radio">
-      <span class="radius"></span>
-      <span class="lable">Option1</span>
-    </div>
-    <div class="radio">
-      <span class="radius"></span>
-      <span class="lable">Option1</span>
-    </div>
-    <div class="radio">
-      <span class="radius"></span>
-      <span class="lable">Option1</span>
-    </div>
+    <template v-for="(radio, index) in formData.options.options">
+      <div class="radio" :key="index" :class="{inline: formData.options.inline}">
+        <span class="radius" :class="{checkRadio: formData.options.defaultValue.find(item => item === radio.value)}"></span>
+        <span class="lable">{{radio.label}}</span>
+      </div>
+    </template>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'checkbox'
+  name: 'checkbox',
+  props: {
+    formData: {
+      required: true
+    }
+  }
 }
 </script>
 
@@ -46,7 +37,13 @@ export default {
   padding-left: 10px;
 }
 .radio {
-  display: inline-block;
   margin-right: 10px;
+}
+.checkRadio {
+  background: #0b88f3 !important;
+  border: none !important;
+}
+.inline {
+  display: inline-block;
 }
 </style>

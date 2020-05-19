@@ -15,7 +15,7 @@
 // import RenderForm from './RenderForm'
 import vuedraggable from 'vuedraggable'
 export default {
-  name: 'grid',
+  name: 'myTable',
   props: {
     tableColumns: {
       required: true

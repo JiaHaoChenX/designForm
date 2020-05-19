@@ -10,12 +10,30 @@ const formList = [
       disabled: false
     },
     lableObj: {
-      placeholder: '占位内容',
-      customClass: '自定义Class',
-      defaultValue: '默认值',
-      hidden: '隐藏',
-      disabled: '禁用',
-      required: '必填'
+      placeholder: {
+        label: '占位内容',
+        type: 'input'
+      },
+      customClass: {
+        label: '自定义Class',
+        type: 'input'
+      },
+      defaultValue: {
+        label: '默认值',
+        type: 'input'
+      },
+      hidden: {
+        label: '隐藏',
+        type: 'switch'
+      },
+      disabled: {
+        label: '禁用',
+        type: 'switch'
+      },
+      required: {
+        label: '必填',
+        type: 'switch'
+      }
     }
   },
   {
@@ -29,18 +47,39 @@ const formList = [
       disabled: false
     },
     lableObj: {
-      placeholder: '占位内容',
-      customClass: '自定义Class',
-      defaultValue: '默认值',
-      hidden: '隐藏',
-      disabled: '禁用',
-      required: '必填'
+      placeholder: {
+        label: '占位内容',
+        type: 'input'
+      },
+      customClass: {
+        label: '自定义Class',
+        type: 'input'
+      },
+      defaultValue: {
+        label: '默认值',
+        type: 'input'
+      },
+      hidden: {
+        label: '隐藏',
+        type: 'switch'
+      },
+      disabled: {
+        label: '禁用',
+        type: 'switch'
+      },
+      required: {
+        label: '必填',
+        type: 'switch'
+      }
     }
   },
   {
     name: '计数器',
     type: 'number',
     options: {
+      min: 0,
+      max: 0,
+      step: 0,
       placeholder: '',
       customClass: '',
       defaultValue: '',
@@ -48,12 +87,38 @@ const formList = [
       disabled: false
     },
     lableObj: {
-      placeholder: '占位内容',
-      customClass: '自定义Class',
-      defaultValue: '默认值',
-      hidden: '隐藏',
-      disabled: '禁用',
-      required: '必填'
+      min: {
+        label: '最小值',
+        type: 'inputNumber'
+      },
+      max: {
+        label: '最大值',
+        type: 'inputNumber'
+      },
+      step: {
+        label: '步长',
+        type: 'inputNumber'
+      },
+      customClass: {
+        label: '自定义Class',
+        type: 'input'
+      },
+      defaultValue: {
+        label: '默认值',
+        type: 'input'
+      },
+      hidden: {
+        label: '隐藏',
+        type: 'switch'
+      },
+      disabled: {
+        label: '禁用',
+        type: 'switch'
+      },
+      required: {
+        label: '必填',
+        type: 'switch'
+      }
     }
   },
   {
@@ -64,15 +129,63 @@ const formList = [
       customClass: '',
       defaultValue: '',
       hidden: false,
-      disabled: false
+      disabled: false,
+      inline: true,
+      options: [
+        {
+          value: 'Option 1',
+          label: 'Option 1'
+        },
+        {
+          value: 'Option 2',
+          label: 'Option 2'
+        },
+        {
+          value: 'Option 3',
+          label: 'Option 3'
+        }
+      ]
     },
     lableObj: {
-      placeholder: '占位内容',
-      customClass: '自定义Class',
-      defaultValue: '默认值',
-      hidden: '隐藏',
-      disabled: '禁用',
-      required: '必填'
+      inline: {
+        label: '布局方式',
+        type: 'radioGroup',
+        options: [
+          {
+            label: '块级',
+            value: false
+          },
+          {
+            label: '行内',
+            value: true
+          }
+        ]
+      },
+      options: {
+        label: '选项',
+        type: 'options',
+        selectType: 'radio'
+      },
+      customClass: {
+        label: '自定义Class',
+        type: 'input'
+      },
+      defaultValue: {
+        label: '默认值',
+        type: 'hidden'
+      },
+      hidden: {
+        label: '隐藏',
+        type: 'switch'
+      },
+      disabled: {
+        label: '禁用',
+        type: 'switch'
+      },
+      required: {
+        label: '必填',
+        type: 'switch'
+      }
     }
   },
   {
@@ -81,17 +194,65 @@ const formList = [
     options: {
       placeholder: '',
       customClass: '',
-      defaultValue: '',
+      defaultValue: [],
       hidden: false,
-      disabled: false
+      disabled: false,
+      inline: true,
+      options: [
+        {
+          value: 'Option 1',
+          label: 'Option 1'
+        },
+        {
+          value: 'Option 2',
+          label: 'Option 2'
+        },
+        {
+          value: 'Option 3',
+          label: 'Option 3'
+        }
+      ]
     },
     lableObj: {
-      placeholder: '占位内容',
-      customClass: '自定义Class',
-      defaultValue: '默认值',
-      hidden: '隐藏',
-      disabled: '禁用',
-      required: '必填'
+      inline: {
+        label: '布局方式',
+        type: 'checkoutGroup',
+        options: [
+          {
+            label: '块级',
+            value: false
+          },
+          {
+            label: '行内',
+            value: true
+          }
+        ]
+      },
+      options: {
+        label: '选项',
+        type: 'options',
+        selectType: 'checkbox'
+      },
+      customClass: {
+        label: '自定义Class',
+        type: 'input'
+      },
+      defaultValue: {
+        label: '默认值',
+        type: 'hidden'
+      },
+      hidden: {
+        label: '隐藏',
+        type: 'switch'
+      },
+      disabled: {
+        label: '禁用',
+        type: 'switch'
+      },
+      required: {
+        label: '必填',
+        type: 'switch'
+      }
     }
   },
   {
@@ -105,12 +266,30 @@ const formList = [
       disabled: false
     },
     lableObj: {
-      placeholder: '占位内容',
-      customClass: '自定义Class',
-      defaultValue: '默认值',
-      hidden: '隐藏',
-      disabled: '禁用',
-      required: '必填'
+      placeholder: {
+        label: '占位内容',
+        type: 'input'
+      },
+      customClass: {
+        label: '自定义Class',
+        type: 'input'
+      },
+      defaultValue: {
+        label: '默认值',
+        type: 'input'
+      },
+      hidden: {
+        label: '隐藏',
+        type: 'switch'
+      },
+      disabled: {
+        label: '禁用',
+        type: 'switch'
+      },
+      required: {
+        label: '必填',
+        type: 'switch'
+      }
     }
   },
   {
@@ -124,31 +303,72 @@ const formList = [
       disabled: false
     },
     lableObj: {
-      placeholder: '占位内容',
-      customClass: '自定义Class',
-      defaultValue: '默认值',
-      hidden: '隐藏',
-      disabled: '禁用',
-      required: '必填'
+      placeholder: {
+        label: '占位内容',
+        type: 'input'
+      },
+      customClass: {
+        label: '自定义Class',
+        type: 'input'
+      },
+      defaultValue: {
+        label: '默认值',
+        type: 'input'
+      },
+      hidden: {
+        label: '隐藏',
+        type: 'switch'
+      },
+      disabled: {
+        label: '禁用',
+        type: 'switch'
+      },
+      required: {
+        label: '必填',
+        type: 'switch'
+      }
     }
   },
   {
     name: '评分',
     type: 'rate',
     options: {
+      max: 5,
       placeholder: '',
       customClass: '',
-      defaultValue: '',
+      defaultValue: 5,
       hidden: false,
       disabled: false
     },
     lableObj: {
-      placeholder: '占位内容',
-      customClass: '自定义Class',
-      defaultValue: '默认值',
-      hidden: '隐藏',
-      disabled: '禁用',
-      required: '必填'
+      placeholder: {
+        label: '占位内容',
+        type: 'input'
+      },
+      customClass: {
+        label: '自定义Class',
+        type: 'input'
+      },
+      max: {
+        label: '最大值',
+        type: 'inputNumber'
+      },
+      defaultValue: {
+        label: '默认值',
+        type: 'rate'
+      },
+      hidden: {
+        label: '隐藏',
+        type: 'switch'
+      },
+      disabled: {
+        label: '禁用',
+        type: 'switch'
+      },
+      required: {
+        label: '必填',
+        type: 'switch'
+      }
     }
   },
   {
@@ -159,15 +379,48 @@ const formList = [
       customClass: '',
       defaultValue: '',
       hidden: false,
-      disabled: false
+      disabled: false,
+      options: [
+        {
+          value: 'Option 1',
+          label: 'Option 1'
+        },
+        {
+          value: 'Option 2',
+          label: 'Option 2'
+        },
+        {
+          value: 'Option 3',
+          label: 'Option 3'
+        }
+      ]
     },
     lableObj: {
-      placeholder: '占位内容',
-      customClass: '自定义Class',
-      defaultValue: '默认值',
-      hidden: '隐藏',
-      disabled: '禁用',
-      required: '必填'
+      options: {
+        label: '选项',
+        type: 'options',
+        selectType: 'radio'
+      },
+      customClass: {
+        label: '自定义Class',
+        type: 'input'
+      },
+      defaultValue: {
+        label: '默认值',
+        type: 'hidden'
+      },
+      hidden: {
+        label: '隐藏',
+        type: 'switch'
+      },
+      disabled: {
+        label: '禁用',
+        type: 'switch'
+      },
+      required: {
+        label: '必填',
+        type: 'switch'
+      }
     }
   },
   {
@@ -176,17 +429,35 @@ const formList = [
     options: {
       placeholder: '',
       customClass: '',
-      defaultValue: '',
+      defaultValue: false,
       hidden: false,
       disabled: false
     },
     lableObj: {
-      placeholder: '占位内容',
-      customClass: '自定义Class',
-      defaultValue: '默认值',
-      hidden: '隐藏',
-      disabled: '禁用',
-      required: '必填'
+      placeholder: {
+        label: '占位内容',
+        type: 'input'
+      },
+      customClass: {
+        label: '自定义Class',
+        type: 'input'
+      },
+      defaultValue: {
+        label: '默认值',
+        type: 'switch'
+      },
+      hidden: {
+        label: '隐藏',
+        type: 'switch'
+      },
+      disabled: {
+        label: '禁用',
+        type: 'switch'
+      },
+      required: {
+        label: '必填',
+        type: 'switch'
+      }
     }
   },
   {
@@ -195,17 +466,35 @@ const formList = [
     options: {
       placeholder: '',
       customClass: '',
-      defaultValue: '',
+      defaultValue: 'This is a text',
       hidden: false,
       disabled: false
     },
     lableObj: {
-      placeholder: '占位内容',
-      customClass: '自定义Class',
-      defaultValue: '默认值',
-      hidden: '隐藏',
-      disabled: '禁用',
-      required: '必填'
+      placeholder: {
+        label: '占位内容',
+        type: 'input'
+      },
+      customClass: {
+        label: '自定义Class',
+        type: 'input'
+      },
+      defaultValue: {
+        label: '默认值',
+        type: 'input'
+      },
+      hidden: {
+        label: '隐藏',
+        type: 'switch'
+      },
+      disabled: {
+        label: '禁用',
+        type: 'switch'
+      },
+      required: {
+        label: '必填',
+        type: 'switch'
+      }
     }
   },
   {
@@ -215,16 +504,39 @@ const formList = [
       placeholder: '',
       customClass: '',
       defaultValue: '',
+      limit: 5,
       hidden: false,
       disabled: false
     },
     lableObj: {
-      placeholder: '占位内容',
-      customClass: '自定义Class',
-      defaultValue: '默认值',
-      hidden: '隐藏',
-      disabled: '禁用',
-      required: '必填'
+      placeholder: {
+        label: '占位内容',
+        type: 'input'
+      },
+      customClass: {
+        label: '自定义Class',
+        type: 'input'
+      },
+      limit: {
+        label: '最大上传数',
+        type: 'inputNumber'
+      },
+      defaultValue: {
+        label: '默认值',
+        type: 'input'
+      },
+      hidden: {
+        label: '隐藏',
+        type: 'switch'
+      },
+      disabled: {
+        label: '禁用',
+        type: 'switch'
+      },
+      required: {
+        label: '必填',
+        type: 'switch'
+      }
     }
   },
   {
@@ -238,12 +550,34 @@ const formList = [
       disabled: false
     },
     lableObj: {
-      placeholder: '占位内容',
-      customClass: '自定义Class',
-      defaultValue: '默认值',
-      hidden: '隐藏',
-      disabled: '禁用',
-      required: '必填'
+      placeholder: {
+        label: '占位内容',
+        type: 'input'
+      },
+      customClass: {
+        label: '自定义Class',
+        type: 'input'
+      },
+      limit: {
+        label: '最大上传数',
+        type: 'inputNumber'
+      },
+      defaultValue: {
+        label: '默认值',
+        type: 'input'
+      },
+      hidden: {
+        label: '隐藏',
+        type: 'switch'
+      },
+      disabled: {
+        label: '禁用',
+        type: 'switch'
+      },
+      required: {
+        label: '必填',
+        type: 'switch'
+      }
     }
   },
   {
@@ -257,12 +591,123 @@ const formList = [
       disabled: false
     },
     lableObj: {
-      placeholder: '占位内容',
-      customClass: '自定义Class',
-      defaultValue: '默认值',
-      hidden: '隐藏',
-      disabled: '禁用',
-      required: '必填'
+      placeholder: {
+        label: '占位内容',
+        type: 'input'
+      },
+      customClass: {
+        label: '自定义Class',
+        type: 'input'
+      },
+      limit: {
+        label: '最大上传数',
+        type: 'inputNumber'
+      },
+      defaultValue: {
+        label: '默认值',
+        type: 'input'
+      },
+      hidden: {
+        label: '隐藏',
+        type: 'switch'
+      },
+      disabled: {
+        label: '禁用',
+        type: 'switch'
+      },
+      required: {
+        label: '必填',
+        type: 'switch'
+      }
+    }
+  },
+  {
+    name: '栅格布局',
+    type: 'grid',
+    columns: [
+      {
+        span: 12,
+        list: []
+      },
+      {
+        span: 12,
+        list: []
+      }
+    ],
+    options: {
+      placeholder: '',
+      customClass: '',
+      defaultValue: '',
+      hidden: false,
+      disabled: false
+    },
+    lableObj: {
+      placeholder: {
+        label: '占位内容',
+        type: 'input'
+      },
+      customClass: {
+        label: '自定义Class',
+        type: 'input'
+      },
+      limit: {
+        label: '最大上传数',
+        type: 'inputNumber'
+      },
+      defaultValue: {
+        label: '默认值',
+        type: 'input'
+      },
+      hidden: {
+        label: '隐藏',
+        type: 'switch'
+      },
+      disabled: {
+        label: '禁用',
+        type: 'switch'
+      },
+      required: {
+        label: '必填',
+        type: 'switch'
+      }
+    }
+  },
+  {
+    name: '子表单',
+    type: 'table',
+    tableColumns: [],
+    options: {
+      placeholder: '',
+      customClass: '',
+      defaultValue: [],
+      hidden: false,
+      disabled: false
+    },
+    lableObj: {
+      placeholder: {
+        label: '占位内容',
+        type: 'input'
+      },
+      customClass: {
+        label: '自定义Class',
+        type: 'input'
+      },
+      defaultValue: {
+        label: '默认值',
+        type: 'hidden'
+      },
+      hidden: {
+        label: '隐藏',
+        type: 'switch'
+      },
+      disabled: {
+        label: '禁用',
+        type: 'switch'
+      },
+      required: {
+        label: '必填',
+        type: 'switch'
+      }
     }
   }
 ]

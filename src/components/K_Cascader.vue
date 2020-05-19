@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'select'
+  name: 'cascader'
 }
 </script>
 

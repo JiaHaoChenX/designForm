@@ -1,15 +1,17 @@
 <template>
   <div class="rateBig">
-    <a-icon type="star" class="rate"/>
-    <a-icon type="star" class="rate"/>
-    <a-icon type="star" class="rate"/>
-    <a-icon type="star" class="rate"/>
+    <a-rate :count="formData.options.max" v-model="formData.options.defaultValue"/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'rate'
+  name: 'rate',
+  props: {
+    formData: {
+      required: true
+    }
+  }
 }
 </script>
 
@@ -20,4 +22,5 @@ export default {
 .rate {
   margin-right: 10px;
 }
+
 </style>

@@ -1,12 +1,17 @@
 <template>
   <div class="textBig">
-    文字
+    {{formData.options.defaultValue}}
   </div>
 </template>
 
 <script>
 export default {
-  name: 'text'
+  name: 'text',
+  props: {
+    formData: {
+      required: true
+    }
+  }
 }
 </script>
 

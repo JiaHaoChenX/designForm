@@ -2,14 +2,19 @@
   <div class="dateBig">
     <div class="date">
       <a-icon type="carry-out" />
-      <span class="value">1234</span>
+      <span class="value">{{formData.options.defaultValue}}</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'date'
+  name: 'date',
+  props: {
+    formData: {
+      required: true
+    }
+  }
 }
 </script>
 

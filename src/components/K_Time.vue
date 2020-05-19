@@ -1,15 +1,20 @@
 <template>
   <div class="timeBig">
     <div class="time">
-      <a-icon type="history" />
-      <span class="value">1234</span>
+      <a-icon type="history"/>
+      <span class="value">{{formData.options.defaultValue}}</span>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'time'
+  name: 'time',
+  props: {
+    formData: {
+      required: true
+    }
+  }
 }
 </script>
 

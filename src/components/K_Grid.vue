@@ -1,6 +1,5 @@
 <template>
   <div>
-    <!-- <render-form></render-form> -->
     <a-row>
       <template v-for="(elem, indexElem) in columns.columns">
         <a-col :key="indexElem" :span="elem.span" class="">
