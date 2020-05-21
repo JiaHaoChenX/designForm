@@ -14,11 +14,15 @@
         </ul>
       </div>
       <div class="middle">
-        <div class="operation">表单字段</div>
-        <vuedraggable :list="renderList" :options="dragOptions2" class="vuedraggable">
+        <div class="operation">
+          <a-button type="link" @click="addFormData">
+            保存
+          </a-button>
+        </div>
+        <vuedraggable :list="resultJson.list" :options="dragOptions2" class="vuedraggable">
           <transition-group class="form" type="transition" :name="'flip-list'" tag="div">
-            <template v-for="(item, index) in renderList">
-              <render-form :name="item.id" :key="index" :formData="item"></render-form>
+            <template v-for="(item, index) in resultJson.list">
+              <render-form :key="index" :formData="item"></render-form>
             </template>
           </transition-group>
         </vuedraggable>
@@ -31,7 +35,12 @@
             </div>
           </a-tab-pane>
           <a-tab-pane key="2" tab="表当属性" force-render>
-            Content of Tab Pane 2
+            <div style="margin: 10px;text-align: left;">
+              <label>unitUrl</label>
+              <a-input v-model="resultJson.unitUrl"/>
+              <label>optionUrl</label>
+              <a-input v-model="resultJson.optionUrl"/>
+            </div>
           </a-tab-pane>
         </a-tabs>
       </div>
@@ -43,8 +52,9 @@
 import 'codemirror/lib/codemirror.css'
 import 'codemirror/theme/blackboard.css'
 import vuedraggable from 'vuedraggable'
-import formList from './formList'
+import { formList } from './formList'
 import RenderAttrs from './RenderAttrs'
+import mockData from './mock'
 export default {
   name: 'designform',
   computed: {
@@ -55,7 +65,12 @@ export default {
   data () {
     return {
       formList,
-      renderList: [],
+      // resultJson: {
+      //   list: [],
+      //   unitUrl: '',
+      //   optionUrl: ''
+      // },
+      resultJson: mockData,
       // 拖拽表单1
       dragOptions1: {
         animation: 0,
@@ -82,8 +97,12 @@ export default {
     }
   },
   mounted () {
+
   },
   methods: {
+    addFormData () {
+      console.log(JSON.stringify(this.resultJson))
+    },
     cloneData (original) {
       const copyOriginal = JSON.parse(JSON.stringify(original))
       copyOriginal.model = original.type + '_' + new Date().getTime()
@@ -145,6 +164,7 @@ export default {
     height: 45px;
     line-height: 45px;
     border-bottom: 2px solid #E4E7ED;
+    text-align: right;
   }
   .vuedraggable {
     height: 90%;

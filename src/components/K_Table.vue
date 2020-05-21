@@ -1,8 +1,8 @@
 <template>
   <div>
-    <vuedraggable :list="tableColumns.tableColumns" :options="dragOptionsTable">
+    <vuedraggable :list="formData.tableColumns" :options="dragOptionsTable">
       <transition-group class="table" type="transition" :name="'grid-list'" tag="div">
-        <template v-for="(item, index) in tableColumns.tableColumns">
+        <template v-for="(item, index) in formData.tableColumns">
           <render-form :name="item.id" :key="index" @renderFormClick="renderFormClick(item.id)" class="renderForm"
             :isClick="curRenderFormId === item.id" :formData="item"></render-form>
         </template>
@@ -17,7 +17,7 @@ import vuedraggable from 'vuedraggable'
 export default {
   name: 'myTable',
   props: {
-    tableColumns: {
+    formData: {
       required: true
     }
   },

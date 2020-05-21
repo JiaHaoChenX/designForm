@@ -1,12 +1,12 @@
 <template>
   <div>
     <a-row>
-      <template v-for="(elem, indexElem) in columns.columns">
+      <template v-for="(elem, indexElem) in formData.columns">
         <a-col :key="indexElem" :span="elem.span" class="">
           <vuedraggable :list="elem.list" :options="dragOptionsGird" class="">
             <transition-group class="a-col" type="transition" :name="'grid-list'" tag="div">
               <template v-for="(item, index) in elem.list">
-                <render-form :name="item.id" :key="index" @renderFormClick="renderFormClick(item.id)"
+                <render-form :key="index" @renderFormClick="renderFormClick(item.id)"
                   :isClick="curRenderFormId === item.id" :formData="item"></render-form>
               </template>
             </transition-group>
@@ -23,7 +23,7 @@ import vuedraggable from 'vuedraggable'
 export default {
   name: 'grid',
   props: {
-    columns: {
+    formData: {
       required: true
     }
   },

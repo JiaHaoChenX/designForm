@@ -1,6 +1,22 @@
 <template>
   <div class="elementList" @click.stop="renderFormClick">
-    <div class="element" v-if="formData.type === 'grid'" :class="{elementBorder: isClick}">
+    <!-- <template v-for="(item, index) in Object.keys(components)"> -->
+      <div class="element" :class="{elementBorder: isClick}">
+        <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
+          <a-icon type="border-inner"/>
+        </div>
+        <div class="operation" v-show="isClick">
+          <a-icon type="copy" class="icon"/>
+          <a-divider type="vertical" />
+          <a-icon type="delete" class="icon"/>
+        </div>
+        <div class="elementLable" v-if="isShowName">{{formData.name}}</div>
+        <div class="elementContent" :class="{elementGrid: !isShowName}">
+          <component v-bind:is="components[formData.type]" :formData="formData"></component>
+        </div>
+      </div>
+    <!-- </template> -->
+    <!-- <div class="element" v-if="formData.type === 'grid'" :class="{elementBorder: isClick}">
       <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
         <a-icon type="border-inner"/>
       </div>
@@ -26,8 +42,8 @@
       <div class="elementContent">
         <render-table :tableColumns="formData"></render-table>
       </div>
-    </div>
-    <div class="element" v-else-if="formData.type === 'input'" :class="{elementBorder: isClick}">
+    </div> -->
+    <!-- <div class="element" v-else-if="formData.type === 'input'" :class="{elementBorder: isClick}">
       <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
         <a-icon type="border-inner"/>
       </div>
@@ -38,7 +54,7 @@
       </div>
       <div class="elementLable">{{formData.name}}</div>
       <div class="elementContent">
-        <k-input></k-input>
+        <component v-bind:is="components.KInput"></component>
       </div>
     </div>
     <div class="element" v-else-if="formData.type === 'textarea'" :class="{elementBorder: isClick}">
@@ -209,6 +225,20 @@
         <k-fileupload></k-fileupload>
       </div>
     </div>
+    <div class="element" v-else-if="formData.type === 'config'" :class="{elementBorder: isClick}">
+      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
+        <a-icon type="border-inner"/>
+      </div>
+      <div class="operation" v-show="isClick">
+        <a-icon type="copy" class="icon"/>
+        <a-divider type="vertical" />
+        <a-icon type="delete" class="icon"/>
+      </div>
+      <div class="elementLable">{{formData.name}}</div>
+      <div class="elementContent">
+        <k-config></k-config>
+      </div>
+    </div>
     <div class="element" v-else-if="formData.type === 'imgupload'" :class="{elementBorder: isClick}">
       <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
         <a-icon type="border-inner"/>
@@ -237,6 +267,20 @@
         <k-cascader></k-cascader>
       </div>
     </div>
+    <div class="element" v-else-if="formData.type === 'divider'" :class="{elementBorder: isClick}">
+      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
+        <a-icon type="border-inner"/>
+      </div>
+      <div class="operation" v-show="isClick">
+        <a-icon type="copy" class="icon"/>
+        <a-divider type="vertical" />
+        <a-icon type="delete" class="icon"/>
+      </div>
+      <div class="elementLable">{{formData.name}}</div>
+      <div class="elementContent">
+        <k-divider></k-divider>
+      </div>
+    </div> -->
   </div>
 </template>
 
@@ -256,6 +300,31 @@ import KText from '../components/K_Text'
 import KFileupload from '../components/K_Fileupload'
 import KImgupload from '../components/K_Imgupload'
 import KCascader from '../components/K_Cascader'
+import KConfig from '../components/K_Config'
+import KDivider from '../components/K_Divider'
+// import KGrid from '../components/K_Grid'
+const components = {
+  input: KInput,
+  textarea: KTextarea,
+  number: KNumber,
+  radio: KRadio,
+  checkbox: KCheckbox,
+  time: KTime,
+  date: KDate,
+  rate: KRate,
+  kSelect: KSelect,
+  switch: KSwitch,
+  slider: KSlider,
+  text: KText,
+  fileupload: KFileupload,
+  imgupload: KImgupload,
+  cascader: KCascader,
+  config: KConfig,
+  divider: KDivider,
+  grid: 'grid',
+  table: 'table'
+}
+const hiddenNameList = ['grid', 'divider']
 export default {
   name: 'renderform',
   props: {
@@ -266,34 +335,37 @@ export default {
   computed: {
     isClick () {
       return this.$store.getters.getCurRenderForm.model === this.formData.model
+    },
+    isShowName () {
+      return !hiddenNameList.find(item => item === this.formData.type)
+    }
+  },
+  data () {
+    return {
+      components,
+      hiddenNameList
     }
   },
   methods: {
     renderFormClick () {
       this.$store.commit('setCurRenderForm', this.formData)
     }
-  },
-  components: {
-    KInput,
-    KTextarea,
-    KNumber,
-    KRadio,
-    KCheckbox,
-    KTime,
-    KDate,
-    KRate,
-    KSelect,
-    KSwitch,
-    KSlider,
-    KText,
-    KFileupload,
-    KImgupload,
-    KCascader
   }
 }
 </script>
 
 <style lang="less" scoped>
+.elementList {
+  position: relative;
+}
+.elementList::before {
+  // content: '';
+  // display: block;
+  // position: absolute;
+  // width: 100%;
+  // height: 100%;
+  // z-index: 100;
+}
 .element {
   position: relative;
   border: 1px dashed hsla(0,0%,66.7%,.5);
@@ -354,6 +426,15 @@ export default {
   float: right;
   width: 90%;
   padding-left: 20px;
+  position: relative;
+}
+.elementContent::before {
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
 }
 .elementGrid {
   width: 100%;

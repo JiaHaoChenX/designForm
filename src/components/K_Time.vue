@@ -9,7 +9,7 @@
 
 <script>
 export default {
-  name: 'time',
+  name: 'ktime',
   props: {
     formData: {
       required: true
