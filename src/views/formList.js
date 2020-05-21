@@ -6,6 +6,8 @@ export const formList = [
       placeholder: '',
       customClass: '',
       defaultValue: '',
+      onchange: '',
+      onclick: '',
       hidden: false,
       disabled: false
     }
@@ -25,13 +27,8 @@ export const formList = [
     name: '分割线',
     type: 'divider',
     options: {
-      placeholder: '',
-      customClass: '',
-      defaultValue: '',
-      onchange: '',
-      onclick: '',
-      hidden: false,
-      disabled: false
+      contentPosition: 'left',
+      hidden: false
     }
   },
   {
@@ -43,7 +40,7 @@ export const formList = [
       step: 0,
       placeholder: '',
       customClass: '',
-      defaultValue: '',
+      defaultValue: 0,
       hidden: false,
       disabled: false
     }
@@ -271,6 +268,15 @@ export const formList = [
       hidden: false,
       disabled: false
     }
+  },
+  {
+    name: '编辑器',
+    type: 'editor',
+    options: {
+      hidden: false,
+      disabled: false,
+      required: false
+    }
   }
 ]
 export const formLableList = {
@@ -367,21 +373,37 @@ export const formLableList = {
       label: '标签lable',
       type: 'name'
     },
-    placeholder: {
-      label: '占位内容',
-      type: 'input'
-    },
-    customClass: {
-      label: '自定义Class',
-      type: 'input'
-    },
-    defaultValue: {
-      label: '默认值',
-      type: 'input'
-    },
     hidden: {
       label: '隐藏',
       type: 'switch'
+    },
+    contentPosition: {
+      label: '文案位置',
+      type: 'radioGroup',
+      options: [
+        {
+          label: '左侧',
+          value: 'left'
+        },
+        {
+          label: '居中',
+          value: 'center'
+        },
+        {
+          label: '右侧',
+          value: 'right'
+        }
+      ]
+    }
+  },
+  editor: {
+    model: {
+      label: '唯一标识',
+      type: 'model'
+    },
+    name: {
+      label: '标签lable',
+      type: 'name'
     },
     disabled: {
       label: '禁用',
@@ -389,6 +411,10 @@ export const formLableList = {
     },
     required: {
       label: '必填',
+      type: 'switch'
+    },
+    hidden: {
+      label: '隐藏',
       type: 'switch'
     }
   },
@@ -421,12 +447,12 @@ export const formLableList = {
       label: '步长',
       type: 'inputNumber'
     },
-    customClass: {
-      label: '自定义Class',
-      type: 'input'
-    },
     defaultValue: {
       label: '默认值',
+      type: 'inputNumber'
+    },
+    customClass: {
+      label: '自定义Class',
       type: 'input'
     },
     hidden: {
@@ -518,7 +544,7 @@ export const formLableList = {
     },
     inline: {
       label: '布局方式',
-      type: 'checkoutGroup',
+      type: 'radioGroup',
       options: [
         {
           label: '块级',

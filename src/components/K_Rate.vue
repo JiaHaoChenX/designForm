@@ -1,5 +1,5 @@
 <template>
-  <div class="rateBig">
+  <div class="rateBig coverFormItem">
     <a-rate :count="formData.options.max" v-model="formData.options.defaultValue"/>
   </div>
 </template>

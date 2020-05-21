@@ -22,7 +22,7 @@
         <vuedraggable :list="resultJson.list" :options="dragOptions2" class="vuedraggable">
           <transition-group class="form" type="transition" :name="'flip-list'" tag="div">
             <template v-for="(item, index) in resultJson.list">
-              <render-form :key="index" :formData="item"></render-form>
+              <render-form :key="index" :formData="item" @deleteClick="deleteClick"></render-form>
             </template>
           </transition-group>
         </vuedraggable>
@@ -102,6 +102,9 @@ export default {
   methods: {
     addFormData () {
       console.log(JSON.stringify(this.resultJson))
+    },
+    deleteClick (model) {
+      this.resultJson.list = this.resultJson.list.filter(item => item.model !== model)
     },
     cloneData (original) {
       const copyOriginal = JSON.parse(JSON.stringify(original))
@@ -226,6 +229,15 @@ export default {
 .ghost {
   height: 0px !important;
   width: 100% !important;
+  background: #F56C6C !important;
+  border-radius: 3px !important;
+  overflow: hidden !important;
+  border: 3px solid #F56C6C;
+  position: relative;
+}
+.tableGhost {
+  height: 100% !important;
+  width: 0 !important;
   background: #F56C6C !important;
   border-radius: 3px !important;
   overflow: hidden !important;

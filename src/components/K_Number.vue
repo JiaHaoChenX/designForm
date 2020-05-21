@@ -1,7 +1,7 @@
 <template>
   <div class="numberBig">
     <div class="reduce"><a-icon type="minus" /></div>
-    <div class="number">{{value}}</div>
+    <div class="number">{{formData.options.defaultValue}}</div>
     <div class="plus"><a-icon type="plus" /></div>
   </div>
 </template>
@@ -10,9 +10,8 @@
 export default {
   name: 'number',
   props: {
-    value: {
-      required: false,
-      default: 0
+    formData: {
+      required: false
     }
   }
 }

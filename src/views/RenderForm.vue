@@ -1,286 +1,20 @@
 <template>
   <div class="elementList" @click.stop="renderFormClick">
-    <!-- <template v-for="(item, index) in Object.keys(components)"> -->
-      <div class="element" :class="{elementBorder: isClick}">
-        <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
-          <a-icon type="border-inner"/>
-        </div>
-        <div class="operation" v-show="isClick">
-          <a-icon type="copy" class="icon"/>
-          <a-divider type="vertical" />
-          <a-icon type="delete" class="icon"/>
-        </div>
-        <div class="elementLable" v-if="isShowName">{{formData.name}}</div>
-        <div class="elementContent" :class="{elementGrid: !isShowName}">
-          <component v-bind:is="components[formData.type]" :formData="formData"></component>
-        </div>
-      </div>
-    <!-- </template> -->
-    <!-- <div class="element" v-if="formData.type === 'grid'" :class="{elementBorder: isClick}">
+    <div class="element" :class="{elementBorder: isClick}">
+      <span class="model">{{formData.model}}</span>
       <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
         <a-icon type="border-inner"/>
       </div>
       <div class="operation" v-show="isClick">
         <a-icon type="copy" class="icon"/>
         <a-divider type="vertical" />
-        <a-icon type="delete" class="icon"/>
+        <a-icon type="delete" @click="deleteClick" class="icon"/>
       </div>
-      <div class="elementGrid">
-        <grid :columns="formData"></grid>
+      <div class="elementLable" v-if="isShowName">{{formData.name}}</div>
+      <div class="elementContent" :class="{elementGrid: !isShowName}">
+        <component v-bind:is="components[formData.type]" :formData="formData"></component>
       </div>
     </div>
-    <div class="element" v-else-if="formData.type === 'table'" :class="{elementBorder: isClick}">
-      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
-        <a-icon type="border-inner"/>
-      </div>
-      <div class="operation" v-show="isClick">
-        <a-icon type="copy" class="icon"/>
-        <a-divider type="vertical" />
-        <a-icon type="delete" class="icon"/>
-      </div>
-      <div class="elementLable">{{formData.name}}</div>
-      <div class="elementContent">
-        <render-table :tableColumns="formData"></render-table>
-      </div>
-    </div> -->
-    <!-- <div class="element" v-else-if="formData.type === 'input'" :class="{elementBorder: isClick}">
-      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
-        <a-icon type="border-inner"/>
-      </div>
-      <div class="operation" v-show="isClick">
-        <a-icon type="copy" class="icon"/>
-        <a-divider type="vertical" />
-        <a-icon type="delete" class="icon"/>
-      </div>
-      <div class="elementLable">{{formData.name}}</div>
-      <div class="elementContent">
-        <component v-bind:is="components.KInput"></component>
-      </div>
-    </div>
-    <div class="element" v-else-if="formData.type === 'textarea'" :class="{elementBorder: isClick}">
-      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
-        <a-icon type="border-inner"/>
-      </div>
-      <div class="operation" v-show="isClick">
-        <a-icon type="copy" class="icon"/>
-        <a-divider type="vertical" />
-        <a-icon type="delete" class="icon"/>
-      </div>
-      <div class="elementLable">{{formData.name}}</div>
-      <div class="elementContent">
-        <k-textarea></k-textarea>
-      </div>
-    </div>
-    <div class="element" v-else-if="formData.type === 'number'" :class="{elementBorder: isClick}">
-      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
-        <a-icon type="border-inner"/>
-      </div>
-      <div class="operation" v-show="isClick">
-        <a-icon type="copy" class="icon"/>
-        <a-divider type="vertical" />
-        <a-icon type="delete" class="icon"/>
-      </div>
-      <div class="elementLable">{{formData.name}}</div>
-      <div class="elementContent">
-        <k-number></k-number>
-      </div>
-    </div>
-    <div class="element" v-else-if="formData.type === 'radio'" :class="{elementBorder: isClick}">
-      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
-        <a-icon type="border-inner"/>
-      </div>
-      <div class="operation" v-show="isClick">
-        <a-icon type="copy" class="icon"/>
-        <a-divider type="vertical" />
-        <a-icon type="delete" class="icon"/>
-      </div>
-      <div class="elementLable">{{formData.name}}</div>
-      <div class="elementContent">
-        <k-radio :formData="formData"></k-radio>
-      </div>
-    </div>
-    <div class="element" v-else-if="formData.type === 'checkbox'" :class="{elementBorder: isClick}">
-      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
-        <a-icon type="border-inner"/>
-      </div>
-      <div class="operation" v-show="isClick">
-        <a-icon type="copy" class="icon"/>
-        <a-divider type="vertical" />
-        <a-icon type="delete" class="icon"/>
-      </div>
-      <div class="elementLable">{{formData.name}}</div>
-      <div class="elementContent">
-        <k-checkbox :formData="formData"></k-checkbox>
-      </div>
-    </div>
-    <div class="element" v-else-if="formData.type === 'time'" :class="{elementBorder: isClick}">
-      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
-        <a-icon type="border-inner"/>
-      </div>
-      <div class="operation" v-show="isClick">
-        <a-icon type="copy" class="icon"/>
-        <a-divider type="vertical" />
-        <a-icon type="delete" class="icon"/>
-      </div>
-      <div class="elementLable">{{formData.name}}</div>
-      <div class="elementContent">
-        <k-time :formData="formData"></k-time>
-      </div>
-    </div>
-    <div class="element" v-else-if="formData.type === 'date'" :class="{elementBorder: isClick}">
-      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
-        <a-icon type="border-inner"/>
-      </div>
-      <div class="operation" v-show="isClick">
-        <a-icon type="copy" class="icon"/>
-        <a-divider type="vertical" />
-        <a-icon type="delete" class="icon"/>
-      </div>
-      <div class="elementLable">{{formData.name}}</div>
-      <div class="elementContent">
-        <k-date :formData="formData"></k-date>
-      </div>
-    </div>
-    <div class="element" v-else-if="formData.type === 'rate'" :class="{elementBorder: isClick}">
-      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
-        <a-icon type="border-inner"/>
-      </div>
-      <div class="operation" v-show="isClick">
-        <a-icon type="copy" class="icon"/>
-        <a-divider type="vertical" />
-        <a-icon type="delete" class="icon"/>
-      </div>
-      <div class="elementLable">{{formData.name}}</div>
-      <div class="elementContent">
-        <k-rate :formData="formData"></k-rate>
-      </div>
-    </div>
-    <div class="element" v-else-if="formData.type === 'select'" :class="{elementBorder: isClick}">
-      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
-        <a-icon type="border-inner"/>
-      </div>
-      <div class="operation" v-show="isClick">
-        <a-icon type="copy" class="icon"/>
-        <a-divider type="vertical" />
-        <a-icon type="delete" class="icon"/>
-      </div>
-      <div class="elementLable">{{formData.name}}</div>
-      <div class="elementContent">
-        <k-select :formData="formData"></k-select>
-      </div>
-    </div>
-    <div class="element" v-else-if="formData.type === 'switch'" :class="{elementBorder: isClick}">
-      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
-        <a-icon type="border-inner"/>
-      </div>
-      <div class="operation" v-show="isClick">
-        <a-icon type="copy" class="icon"/>
-        <a-divider type="vertical" />
-        <a-icon type="delete" class="icon"/>
-      </div>
-      <div class="elementLable">{{formData.name}}</div>
-      <div class="elementContent">
-        <k-switch :formData="formData"></k-switch>
-      </div>
-    </div>
-    <div class="element" v-else-if="formData.type === 'slider'" :class="{elementBorder: isClick}">
-      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
-        <a-icon type="border-inner"/>
-      </div>
-      <div class="operation" v-show="isClick">
-        <a-icon type="copy" class="icon"/>
-        <a-divider type="vertical" />
-        <a-icon type="delete" class="icon"/>
-      </div>
-      <div class="elementLable">{{formData.name}}</div>
-      <div class="elementContent">
-        <k-slider></k-slider>
-      </div>
-    </div>
-    <div class="element" v-else-if="formData.type === 'text'" :class="{elementBorder: isClick}">
-      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
-        <a-icon type="border-inner"/>
-      </div>
-      <div class="operation" v-show="isClick">
-        <a-icon type="copy" class="icon"/>
-        <a-divider type="vertical" />
-        <a-icon type="delete" class="icon"/>
-      </div>
-      <div class="elementLable">{{formData.name}}</div>
-      <div class="elementContent">
-        <k-text  :formData="formData"></k-text>
-      </div>
-    </div>
-    <div class="element" v-else-if="formData.type === 'fileupload'" :class="{elementBorder: isClick}">
-      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
-        <a-icon type="border-inner"/>
-      </div>
-      <div class="operation" v-show="isClick">
-        <a-icon type="copy" class="icon"/>
-        <a-divider type="vertical" />
-        <a-icon type="delete" class="icon"/>
-      </div>
-      <div class="elementLable">{{formData.name}}</div>
-      <div class="elementContent">
-        <k-fileupload></k-fileupload>
-      </div>
-    </div>
-    <div class="element" v-else-if="formData.type === 'config'" :class="{elementBorder: isClick}">
-      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
-        <a-icon type="border-inner"/>
-      </div>
-      <div class="operation" v-show="isClick">
-        <a-icon type="copy" class="icon"/>
-        <a-divider type="vertical" />
-        <a-icon type="delete" class="icon"/>
-      </div>
-      <div class="elementLable">{{formData.name}}</div>
-      <div class="elementContent">
-        <k-config></k-config>
-      </div>
-    </div>
-    <div class="element" v-else-if="formData.type === 'imgupload'" :class="{elementBorder: isClick}">
-      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
-        <a-icon type="border-inner"/>
-      </div>
-      <div class="operation" v-show="isClick">
-        <a-icon type="copy" class="icon"/>
-        <a-divider type="vertical" />
-        <a-icon type="delete" class="icon"/>
-      </div>
-      <div class="elementLable">{{formData.name}}</div>
-      <div class="elementContent">
-        <k-imgupload></k-imgupload>
-      </div>
-    </div>
-    <div class="element" v-else-if="formData.type === 'cascader'" :class="{elementBorder: isClick}">
-      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
-        <a-icon type="border-inner"/>
-      </div>
-      <div class="operation" v-show="isClick">
-        <a-icon type="copy" class="icon"/>
-        <a-divider type="vertical" />
-        <a-icon type="delete" class="icon"/>
-      </div>
-      <div class="elementLable">{{formData.name}}</div>
-      <div class="elementContent">
-        <k-cascader></k-cascader>
-      </div>
-    </div>
-    <div class="element" v-else-if="formData.type === 'divider'" :class="{elementBorder: isClick}">
-      <div class="move drag-item" v-show="isClick" @mousedown="$emit('myMousedown')">
-        <a-icon type="border-inner"/>
-      </div>
-      <div class="operation" v-show="isClick">
-        <a-icon type="copy" class="icon"/>
-        <a-divider type="vertical" />
-        <a-icon type="delete" class="icon"/>
-      </div>
-      <div class="elementLable">{{formData.name}}</div>
-      <div class="elementContent">
-        <k-divider></k-divider>
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -302,7 +36,7 @@ import KImgupload from '../components/K_Imgupload'
 import KCascader from '../components/K_Cascader'
 import KConfig from '../components/K_Config'
 import KDivider from '../components/K_Divider'
-// import KGrid from '../components/K_Grid'
+import KEditor from '../components/K_Editor'
 const components = {
   input: KInput,
   textarea: KTextarea,
@@ -321,8 +55,9 @@ const components = {
   cascader: KCascader,
   config: KConfig,
   divider: KDivider,
+  editor: KEditor,
   grid: 'grid',
-  table: 'table'
+  table: 'render-table'
 }
 const hiddenNameList = ['grid', 'divider']
 export default {
@@ -349,6 +84,9 @@ export default {
   methods: {
     renderFormClick () {
       this.$store.commit('setCurRenderForm', this.formData)
+    },
+    deleteClick () {
+      this.$emit('deleteClick', this.formData.model)
     }
   }
 }
@@ -357,14 +95,6 @@ export default {
 <style lang="less" scoped>
 .elementList {
   position: relative;
-}
-.elementList::before {
-  // content: '';
-  // display: block;
-  // position: absolute;
-  // width: 100%;
-  // height: 100%;
-  // z-index: 100;
 }
 .element {
   position: relative;
@@ -428,21 +158,42 @@ export default {
   padding-left: 20px;
   position: relative;
 }
-.elementContent::before {
-  content: '';
-  display: block;
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-}
+// .elementContent::before {
+//   content: '';
+//   display: block;
+//   position: absolute;
+//   width: 100%;
+//   height: 100%;
+//   z-index: 100;
+// }
 .elementGrid {
   width: 100%;
+  padding-left: 0 !important;
 }
 .line {
   height: 6px;
   width: 100%;
   background: #F56C6C;
   border-radius: 3px;
+}
+.model {
+  position: absolute;
+  top: 0px;
+  right: 6px;
+  font-size: 12px;
+  color: #67c23a;
+  z-index: 9;
+}
+
+.coverFormItem {
+  position: relative;
+}
+.coverFormItem::before{
+  content: '';
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 10000000000;
 }
 </style>

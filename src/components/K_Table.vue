@@ -3,7 +3,7 @@
     <vuedraggable :list="formData.tableColumns" :options="dragOptionsTable">
       <transition-group class="table" type="transition" :name="'grid-list'" tag="div">
         <template v-for="(item, index) in formData.tableColumns">
-          <render-form :name="item.id" :key="index" @renderFormClick="renderFormClick(item.id)" class="renderForm"
+          <render-form :name="item.id" :key="index" @renderFormClick="renderFormClick(item.id)" class="renderForm" @deleteClick="deleteClick"
             :isClick="curRenderFormId === item.id" :formData="item"></render-form>
         </template>
       </transition-group>
@@ -27,7 +27,7 @@ export default {
       // 拖拽表单2
       dragOptionsTable: {
         animation: 200,
-        ghostClass: 'ghost',
+        ghostClass: 'tableGhost',
         handle: '.drag-item',
         group: {
           name: 'table',
@@ -37,8 +37,12 @@ export default {
       }
     }
   },
+  methods: {
+    deleteClick (model) {
+      this.formData.tableColumns = this.formData.tableColumns.filter(item => item.model !== model)
+    }
+  },
   components: {
-    // 'render-form': RenderForm,
     vuedraggable
   }
 }
@@ -53,7 +57,7 @@ export default {
   white-space: nowrap;
 }
 .renderForm {
-  width: 300px !important;
+  width: 300px;
   display: inline-block;
 }
 </style>

@@ -6,8 +6,6 @@
         <a-input v-if="formLableList[curRenderForm.type][item].type === 'input'" v-model="curRenderForm.options[item]"/>
         <a-input v-if="formLableList[curRenderForm.type][item].type === 'model'" v-model="curRenderForm.model"/>
         <a-input v-if="formLableList[curRenderForm.type][item].type === 'name'" v-model="curRenderForm.name"/>
-        <!-- <a-time-picker v-if="formLableList[curRenderForm.type][item].type === 'timePicker'" format="HH:mm" v-model="curRenderForm.options[item]" >
-        </a-time-picker> -->
         <a-switch v-else-if="formLableList[curRenderForm.type][item].type === 'switch'" v-model="curRenderForm.options[item]" style="float: right;"/>
         <a-input-number v-else-if="formLableList[curRenderForm.type][item].type === 'inputNumber'" v-model="curRenderForm.options[item]" style="display: block;width: 100%;"/>
         <a-rate v-else-if="formLableList[curRenderForm.type][item].type === 'rate'"

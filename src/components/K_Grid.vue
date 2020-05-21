@@ -6,7 +6,7 @@
           <vuedraggable :list="elem.list" :options="dragOptionsGird" class="">
             <transition-group class="a-col" type="transition" :name="'grid-list'" tag="div">
               <template v-for="(item, index) in elem.list">
-                <render-form :key="index" @renderFormClick="renderFormClick(item.id)"
+                <render-form :key="index" @renderFormClick="renderFormClick(item.id)" @deleteClick="deleteClick"
                   :isClick="curRenderFormId === item.id" :formData="item"></render-form>
               </template>
             </transition-group>
@@ -46,6 +46,13 @@ export default {
   components: {
     // 'render-form': RenderForm,
     vuedraggable
+  },
+  methods: {
+    deleteClick (model) {
+      this.formData.columns.map(item => {
+        item.list = item.list.filter(item => item.model !== model)
+      })
+    }
   }
 }
 </script>

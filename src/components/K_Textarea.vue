@@ -1,11 +1,17 @@
 <template>
-  <div class="textarea">
+  <div class="coverFormItem">
+    <a-textarea :placeholder="formData.options.placeholder" v-model="formData.options.defaultValue" :autoSize="{ minRows: 4, maxRows: 4 }" />
   </div>
 </template>
 
 <script>
 export default {
-
+  name: 'ktextarea',
+  props: {
+    formData: {
+      required: false
+    }
+  }
 }
 </script>
 
